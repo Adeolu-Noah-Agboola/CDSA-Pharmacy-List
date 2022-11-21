@@ -1,4 +1,4 @@
-# Task-3 Code here:
+#program that reads from a text file and outputs users who have a prescription based on ascending order of their record date
 from datetime import datetime
 
 year = []
@@ -15,12 +15,6 @@ with open ("pharmacy_list.txt",'r') as f:
             cdsaEntry.append(line.split(','))
 
 
-"""
-The Isoformat() function is used to 
-return a string of date, time, and UTC offset to the corresponding time zone in ISO 8601 format
-I used this so that I do not have to index the string manually and remove the dashes in between
-the month day and the year
-"""
 cdsaEntry.sort(key=lambda entry: datetime.fromisoformat(entry[2][1:11]))
 
 print("{:<20} | {:<15} | {:<20} | {:<15}".format('Patient Name', 'Drug ID', 'Prescription Date', 'Name of CDSA'))
